@@ -75,6 +75,32 @@
         </section>
 
         <section>
+            <h2>CI/CD Pipeline & Automated Deployment</h2>
+            <p>This solution includes a comprehensive CI/CD pipeline using GitHub Actions with secure OIDC authentication for automated, production-ready deployments across multiple environments.</p>
+            <h3>GitHub Actions Workflows</h3>
+            <ul>
+                <li><strong>Automated Testing & Diff Generation:</strong> Runs on pushes to main branch with comprehensive testing, security scanning, and CDK infrastructure diff generation</li>
+                <li><strong>Development Deployment:</strong> Automatic deployment to development environment on pushes to develop branch</li>
+                <li><strong>QA/Staging Deployment:</strong> Triggered on pushes to staging branch with manual approval gates</li>
+                <li><strong>Production Deployment:</strong> Manual trigger with detailed diff review, approval workflow, and deployment summary</li>
+            </ul>
+            <h3>Security & Best Practices</h3>
+            <ul>
+                <li><strong>OIDC Authentication:</strong> Credential-free authentication using OpenID Connect between GitHub and AWS</li>
+                <li><strong>Environment Isolation:</strong> Separate AWS accounts/regions for dev, QA, and production</li>
+                <li><strong>Manual Approvals:</strong> Production deployments require explicit approval with change review</li>
+                <li><strong>Security Scanning:</strong> Automated npm audit checks for dependency vulnerabilities</li>
+            </ul>
+            <h3>Environment-Specific Configurations</h3>
+            <ul>
+                <li><strong>Development:</strong> Cost-optimized resources, automatic deployment, 7-day data retention</li>
+                <li><strong>QA:</strong> Medium resources, manual approval, 14-day retention, comprehensive testing</li>
+                <li><strong>Production:</strong> Full-scale resources, manual approval, 30-day retention, monitoring alerts</li>
+            </ul>
+            <p><em>Implementation:</em> Fully configured GitHub Actions workflows with AWS CDK integration for infrastructure as code.</p>
+        </section>
+
+        <section>
             <h2>Extensibility & Advanced Storage Features</h2>
             <p>This pipeline is designed for easy extension to optimize data management and costs. Key enhancements include:</p>
             <h3>Multi-Tier Storage</h3>
