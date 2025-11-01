@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genomic Sequencing Workflow - AWS CDK Pitch</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #007acc; color: white; padding: 20px; text-align: center; }
+        .container { max-width: 1000px; margin: 20px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1, h2, h3 { color: #007acc; }
+        ul { list-style-type: disc; margin-left: 20px; }
+        .highlight { background-color: #e7f3ff; padding: 10px; border-left: 5px solid #007acc; margin: 20px 0; }
+        footer { text-align: center; padding: 10px; background-color: #007acc; color: white; margin-top: 20px; }
+        a { color: #007acc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Genomic Sequencing Workflow - AWS CDK Implementation</h1>
+        <p>A Production-Ready Solution for Scalable Genomics Processing</p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>🎉 Status: Production Ready</h2>
+            <div class="highlight">
+                <p>✅ Successfully deployed and tested in production environment</p>
+                <p>✅ Complete workflow execution verified</p>
+                <p>✅ AWS SDK v3 compatibility with Lambda functions</p>
+                <p>✅ Automated CI/CD pipeline with secure OIDC authentication</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Why Move from On-Premises?</h2>
+            <div class="highlight">
+                <p>On-premises genomics pipelines face significant uncertainties:</p>
+                <ul>
+                    <li><strong>Hardware Management:</strong> Scaling servers, maintenance, and failures lead to downtime and unpredictability.</li>
+                    <li><strong>Software Updates:</strong> Complex patching, compatibility issues, and manual upgrades increase risk and operational overhead.</li>
+                    <li><strong>Distributed Systems:</strong> Coordinating clusters, load balancing, and fault tolerance require specialized expertise and constant monitoring.</li>
+                </ul>
+                <p>Our cloud-native solution eliminates these challenges with automated, scalable AWS infrastructure.</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Architecture Overview</h2>
+            <h3>Storage Components</h3>
+            <ul>
+                <li><strong>Input Bucket:</strong> Stores raw sequencing data (FASTQ files)</li>
+                <li><strong>Intermediate Bucket:</strong> Processing outputs between stages</li>
+                <li><strong>Output Bucket:</strong> Final analysis results</li>
+                <li><strong>Reference Bucket:</strong> Reference genomes and annotations</li>
+            </ul>
+
+            <h3>Compute Components</h3>
+            <p>Lambda functions orchestrate workflows, with AWS Batch handling compute-intensive tasks:</p>
+            <ul>
+                <li><strong>Standard Compute Environment:</strong> Regular processing</li>
+                <li><strong>High-Memory Compute Environment:</strong> Memory-intensive tasks (e.g., genome assembly)</li>
+            </ul>
+
+            <h3>Workflow Stages</h3>
+            <ol>
+                <li><strong>Read Quality Control:</strong> Assess and trim FASTQ files</li>
+                <li><strong>Read Mapping (Alignment):</strong> Align to reference genome</li>
+                <li><strong>Post-Alignment Processing:</strong> Sorting, duplicate marking, recalibration, realignment</li>
+                <li><strong>Variant Calling:</strong> Identify genetic variations</li>
+                <li><strong>Variant Filtering & Annotation:</strong> Filter and annotate VCF files</li>
+                <li><strong>De Novo Genome Assembly:</strong> Assemble reads into contigs (conditional)</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Extensibility & Advanced Storage Features</h2>
+            <p>This pipeline is designed for easy extension to optimize data management and costs. Key enhancements include:</p>
+            <h3>Multi-Tier Storage</h3>
+            <ul>
+                <li><strong>Intelligent Tiering:</strong> Automatically move input, intermediate, and output data across S3 tiers (Standard, IA, Glacier) based on access patterns and age.</li>
+                <li><strong>Custom Storage Classes:</strong> Use S3 Standard for active processing, intermediate files to IA, and outputs to Glacier for long-term archival.</li>
+                <li><strong>Cost Optimization:</strong> Reduce storage costs by up to 70% for infrequently accessed data without sacrificing performance.</li>
+            </ul>
+            <h3>Lifecycle Policies</h3>
+            <ul>
+                <li><strong>Automated Data Movement:</strong> Configure policies to transition data to cheaper tiers after set periods (e.g., intermediate files to IA after 30 days).</li>
+                <li><strong>Data Retention & Deletion:</strong> Set rules for compliance and quality control, deleting temporary intermediates while retaining outputs for research.</li>
+                <li><strong>Versioning & Backup:</strong> Enable S3 versioning for input data integrity and cross-region replication for disaster recovery.</li>
+            </ul>
+            <p><em>Implementation:</em> Easily add these via CDK updates to the S3 bucket configurations—no code rewrites needed.</p>
+        </section>
+
+        <section>
+            <h2>Monitoring, Logging & Security Features</h2>
+            <p>Extend the pipeline with robust observability and enterprise-grade security for seamless operations across environments.</p>
+            <h3>CloudWatch Logging & Analytics</h3>
+            <ul>
+                <li><strong>Centralized Logging:</strong> All Lambda, Batch, and Step Functions logs saved to CloudWatch for unified visibility.</li>
+                <li><strong>Quick Analysis:</strong> Use CloudWatch Insights for rapid querying and troubleshooting during development, QA, and production phases.</li>
+                <li><strong>Environment-Specific Monitoring:</strong> Separate log groups for dev/QA/prod to track performance metrics and errors in real-time.</li>
+            </ul>
+            <h3>Advanced Security & Compliance</h3>
+            <ul>
+                <li><strong>Authentication:</strong> OIDC-based GitHub Actions for secure CI/CD; IAM roles for service access.</li>
+                <li><strong>Authorization:</strong> Least-privilege policies ensuring users/tools access only necessary resources.</li>
+                <li><strong>Encryption:</strong> S3 SSE-KMS for data at rest; TLS for data in transit.</li>
+                <li><strong>Compliance & Auditing:</strong> VPC isolation, CloudTrail for API auditing, and lifecycle policies for regulatory adherence (e.g., HIPAA for genomics data).</li>
+            </ul>
+            <p><em>Implementation:</em> Easily integrate via CDK—add CloudWatch dashboards, alarms, and security groups without disrupting workflows.</p>
+        </section>
+
+        <section>
+            <h2>Key Benefits</h2>
+            <ul>
+                <li><strong>Scalability:</strong> AWS-native scaling for large datasets</li>
+                <li><strong>Automation:</strong> Step Functions orchestrate end-to-end workflows</li>
+                <li><strong>Cost-Efficiency:</strong> Pay-per-use Lambda and Batch resources</li>
+                <li><strong>Security:</strong> Least-privilege IAM, OIDC auth, VPC isolation</li>
+                <li><strong>Reliability:</strong> Production-tested with monitoring and alarms</li>
+                <li><strong>Extensibility:</strong> Easily add new tools via CDK</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Demo & Usage</h2>
+            <p>Start a sample workflow with:</p>
+            <pre><code>aws stepfunctions start-execution --state-machine-arn "ARN" --input file://sample-input.json</code></pre>
+            <p>Expected outputs: QC metrics, alignment stats, variant files.</p>
+            <p><a href="https://github.com/migratesky/SequencingAWSPipeline">View Full Code & Docs on GitHub</a></p>
+        </section>
+
+        <section>
+            <h2>Why Choose This Solution?</h2>
+            <p>Accelerate genomics research with a cloud-first pipeline that handles everything from raw data to annotated variants. Deploy in minutes across dev/QA/prod environments.</p>
+            <p>Contact us for a pilot demo or customization!</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Genomic Sequencing Workflow. Built with AWS CDK.</p>
+    </footer>
+</body>
+</html>
